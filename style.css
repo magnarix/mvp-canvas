@@ -102,8 +102,9 @@ header {
   position: relative;
 }
 
+/* Logo is now twice as big (80px) */
 header img {
-  width: 80px;
+  width: 80px;   /* was 40px, now doubled */
   height: auto;
   margin-bottom: 0.75rem;
 }
@@ -175,9 +176,10 @@ header h1 {
   color: #0b1e3a;
   cursor: grab;
   transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
-  position: absolute;
+  position: absolute; /* absolute when placed on timeline; static in lists */
 }
 
+/* Card Types (Goals / Risks / KPIs) */
 .card.goal {
   background: #dff8e2;
 }
@@ -200,7 +202,7 @@ header h1 {
   transform: scale(0.98);
 }
 
-/* In-list cards */
+/* In-list cards (position: static) */
 .list-card {
   position: relative;
   cursor: grab;
@@ -218,6 +220,7 @@ header h1 {
   font-weight: 600;
   text-align: center;
   margin-bottom: 0.75rem;
+  transition: background 0.2s;
   position: relative;
   min-height: 80px;
 }
@@ -226,6 +229,7 @@ header h1 {
   background: #009ac8;
 }
 
+/* Drop zone outline */
 .marker.drop-target {
   border: 2px dashed #ffffff;
 }
@@ -235,7 +239,7 @@ header h1 {
 }
 
 /*---------------------------------------
-  Forms
+  Forms (Goals / Risks / KPIs)
 ---------------------------------------*/
 .add-goal-form,
 .add-risk-form,
@@ -293,6 +297,18 @@ header h1 {
 .btn:active {
   background: #00489d;
   transform: translateY(0);
+}
+
+/* Form-group for Dependencies & simulation checkbox labels */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+  color: #3a4a59;
 }
 
 /*---------------------------------------
@@ -366,6 +382,7 @@ header h1 {
     padding: 1.5rem;
     margin-left: 0;
   }
+  /* Hamburger toggle button */
   .hamburger-btn {
     display: inline-block;
     background: none;
