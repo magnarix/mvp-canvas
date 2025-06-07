@@ -1,4 +1,4 @@
-// auth.js – 2025-06-06T18:00-04:00
+// auth.js – 2025-06-07T09:00-04:00
 document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem('access_token');
   if (token) {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const password = document.getElementById('login-password').value;
 
     try {
-      const response = await fetch('https://mvp-backend-zk3a.onrender.com/login', {
+      const response = await fetch('https://mvp-backend-zk3a.onrender.com/json-login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })

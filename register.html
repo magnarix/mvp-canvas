@@ -1,29 +1,53 @@
-<!-- register.html – 2025-06-06T18:00-04:00 -->
+<!-- register.html – Refactored 2025-06-06T18:35-04:00 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Register - MagnaRix</title>
+  <title>Register – MagnaRix</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Create Account</h1>
-    <form id="register-form">
-      <label for="register-email">Email</label>
-      <input type="email" id="register-email" required />
+  <main class="container" role="main">
+    <section>
+      <h1>Create Your MagnaRix Account</h1>
+      <p>Sign up below to get started with MagnaRix.</p>
 
-      <label for="register-password">Password</label>
-      <input type="password" id="register-password" required />
+      <p id="register-error" class="error-msg" aria-live="polite"></p>
 
-      <button type="submit">Register</button>
-      <div class="error-msg" id="register-error"></div>
-    </form>
-    <p style="text-align: center; margin-top: 1em;">
-      Already have an account? <a href="index.html">Login</a>
-    </p>
-  </div>
+      <form id="register-form" novalidate>
+        <div class="form-group">
+          <label for="register-email">Email address</label>
+          <input 
+            type="email" 
+            id="register-email" 
+            name="email" 
+            placeholder="you@example.com" 
+            required 
+            autocomplete="email" 
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="register-password">Password</label>
+          <input 
+            type="password" 
+            id="register-password" 
+            name="password" 
+            placeholder="Choose a password" 
+            required 
+            autocomplete="new-password" 
+          />
+        </div>
+
+        <button type="submit">Register</button>
+      </form>
+
+      <p class="small-text">
+        Already have an account? <a href="index.html">Login here</a>
+      </p>
+    </section>
+  </main>
 
   <script src="register.js"></script>
 </body>
