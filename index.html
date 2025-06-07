@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Command Canvas – Overview</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -11,25 +11,30 @@
   <button class="hamburger-btn" style="display:none;">☰</button>
   <div id="sidebar-placeholder"></div>
 
+  <!-- 🔐 Login/Register UI -->
+  <div style="padding: 1rem; background: #fff8e7; text-align: center; margin-bottom: 1rem;">
+    <input id="auth-email" type="email" placeholder="Email" />
+    <input id="auth-password" type="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <button onclick="register()">Register</button>
+    <span id="auth-status" style="margin-left: 1rem; font-weight: bold; color: green;"></span>
+  </div>
+
   <main class="main-content">
     <header>
-      <!-- Logo is now 80px wide -->
       <img src="logo.png" alt="MagnaRix Logo" />
       <h1>Command Canvas</h1>
       <p class="subtitle">
-        Define Your Goals, Risks &amp; KPIs
-        <!-- Readme link next to subtitle -->
+        Define Your Goals, Risks & KPIs
         <a href="index_README.html" target="_blank" class="readme-link">(Readme)</a>
       </p>
     </header>
 
     <div class="canvas">
-      <!-- ========== Goals Column ========== -->
+      <!-- Goals -->
       <section class="column">
         <h2>Goals</h2>
         <p>Key objectives to drive strategic growth.</p>
-
-        <!-- Add-Goal Form -->
         <div class="add-goal-form">
           <input type="text" id="goal-title" placeholder="Goal Title" required />
           <textarea id="goal-desc" placeholder="Description (optional)" rows="2"></textarea>
@@ -37,17 +42,13 @@
           <input type="text" id="goal-owner" placeholder="Owner (optional)" />
           <button id="saveGoalBtn" class="btn">Save Goal</button>
         </div>
-
-        <!-- Goals List (prepopulated by script_updated.js) -->
         <div id="goals-list"></div>
       </section>
 
-      <!-- ========== Risks Column ========== -->
+      <!-- Risks -->
       <section class="column">
         <h2>Risks</h2>
         <p>Potential obstacles that may impede progress.</p>
-
-        <!-- Add-Risk Form -->
         <div class="add-risk-form">
           <input type="text" id="risk-title" placeholder="Risk Title" required />
           <select id="risk-likelihood">
@@ -63,17 +64,13 @@
           <textarea id="risk-mitigation" placeholder="Mitigation Notes" rows="2"></textarea>
           <button id="saveRiskBtn" class="btn">Save Risk</button>
         </div>
-
-        <!-- Risks List (prepopulated by script_updated.js) -->
         <div id="risks-list"></div>
       </section>
 
-      <!-- ========== KPIs Column ========== -->
+      <!-- KPIs -->
       <section class="column">
         <h2>KPIs</h2>
         <p>Metrics to measure success and performance.</p>
-
-        <!-- Add-KPI Form -->
         <div class="add-kpi-form">
           <input type="text" id="kpi-name" placeholder="KPI Name" required />
           <select id="kpi-metricType">
@@ -89,17 +86,13 @@
           </select>
           <button id="saveKpiBtn" class="btn">Save KPI</button>
         </div>
-
-        <!-- KPIs List (prepopulated by script_updated.js) -->
         <div id="kpis-list"></div>
       </section>
     </div>
   </main>
 
-  <!-- Main JavaScript -->
   <script src="script_updated.js"></script>
 
-  <!-- Dynamically load sidebar.html and highlight active link -->
   <script>
     fetch("sidebar.html")
       .then(res => res.text())
