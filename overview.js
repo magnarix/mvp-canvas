@@ -1,6 +1,7 @@
-// overview.js – 2025-06-06T18:00-04:00
+// overview.js – Fixed 2025-06-07T10:15-04:00
 document.addEventListener('DOMContentLoaded', async function () {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('access_token'); // ✅ FIXED
+
   const logoutBtn = document.getElementById('logout-btn');
 
   if (!token) {
@@ -21,17 +22,17 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     const userData = await response.json();
     console.log('User info:', userData);
-    // You can display the user's email or name in the DOM if desired
+    // Optionally: display user info on the page
 
   } catch (error) {
     console.error(error);
-    localStorage.removeItem('token');
+    localStorage.removeItem('access_token'); // ✅ match the correct key
     window.location.href = 'index.html'; // Force re-login
   }
 
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
-      localStorage.removeItem('token');
+      localStorage.removeItem('access_token'); // ✅ match the correct key
       window.location.href = 'index.html';
     });
   }
