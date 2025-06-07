@@ -1,59 +1,37 @@
-// auth.js — for login and registration only
-const API_BASE = "https://mvp-backend-zk3a.onrender.com";
-
-async function login() {
-  const email = document.getElementById("auth-email").value;
-  const password = document.getElementById("auth-password").value;
-  const form = new URLSearchParams();
-  form.append("username", email);
-  form.append("password", password);
-
-  try {
-    const res = await fetch(`${API_BASE}/login`, {
-      method: "POST",
-      body: form,
-    });
-    const data = await res.json();
-    if (data.access_token) {
-      localStorage.setItem("access_token", data.access_token);
-      document.getElementById("auth-status").textContent = "Login successful ✅";
-      window.location.href = "overview.html";
-    } else {
-      document.getElementById("auth-status").textContent = "Login failed ❌";
-    }
-  } catch (e) {
-    console.error("Login error", e);
-    document.getElementById("auth-status").textContent = "Error during login";
+// auth.js – 2025-06-06T18:00-04:00
+document.addEventListener('DOMContentLoaded', () => {
+  const token = localStorage.getItem('access_token');
+  if (token) {
+    window.location.href = 'overview.html';
+    return;
   }
-}
 
-async function register() {
-  const email = document.getElementById("auth-email").value;
-  const password = document.getElementById("auth-password").value;
+  const form = document.getElementById('login-form');
+  if (!form) return; // Prevent error if the form is not on this page
 
-  try {
-    const res = await fetch(`${API_BASE}/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
 
-    if (res.ok) {
-      document.getElementById("auth-status").textContent =
-        "Registration successful. Please log in.";
-    } else {
-      const msg = await res.json();
-      document.getElementById("auth-status").textContent = msg.detail || "Registration failed";
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+
+    try {
+      const response = await fetch('https://mvp-backend-zk3a.onrender.com/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      if (!response.ok) {
+        throw new Error('Login failed');
+      }
+
+      const data = await response.json();
+      localStorage.setItem('access_token', data.access_token);
+      window.location.href = 'overview.html';
+    } catch (error) {
+      const errorDisplay = document.getElementById('login-error');
+      if (errorDisplay) errorDisplay.textContent = error.message;
     }
-  } catch (e) {
-    console.error("Register error", e);
-    document.getElementById("auth-status").textContent = "Error during registration";
-  }
-}
-window.addEventListener("DOMContentLoaded", () => {
-  const loginButton = document.getElementById("login-button");
-  const registerButton = document.getElementById("register-button");
-
-  loginButton.addEventListener("click", login);
-  registerButton.addEventListener("click", register);
+  });
 });

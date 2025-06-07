@@ -1,24 +1,28 @@
-<!-- index.html – Login/Register Page -->
+<!-- index.html – 2025-06-06T18:00-04:00 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login | MagnaRix</title>
+  <title>Login – MagnaRix</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Welcome to MagnaRix</h1>
-    <p>Please login or register to continue.</p>
+    <h1>Login to MagnaRix</h1>
+    <form id="login-form">
+      <label for="login-email">Email</label>
+      <input type="email" id="login-email" required />
 
-    <div class="auth-form">
-      <input type="email" id="auth-email" placeholder="Email" required />
-      <input type="password" id="auth-password" placeholder="Password" required />
-      <button onclick="login()">Login</button>
-      <button onclick="register()">Register</button>
-      <p id="auth-status"></p>
-    </div>
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" required />
+
+      <button type="submit">Login</button>
+    </form>
+    <p id="login-error" class="error-msg"></p>
+    <p>
+      Don't have an account? <a href="register.html">Register here</a>
+    </p>
   </div>
 
   <script src="auth.js"></script>
