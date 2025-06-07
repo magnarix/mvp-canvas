@@ -1,0 +1,41 @@
+<!-- overview.html – Dashboard (Goals, Risks, KPIs) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Overview | MagnaRix</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="sidebar-container">
+    <div id="sidebar-placeholder"></div>
+  </div>
+
+  <div class="container">
+    <h1>Command Canvas Overview</h1>
+    <p id="auth-status"></p>
+
+    <section>
+      <h2>Goals</h2>
+      <button onclick="addCard('goals')">Add Goal</button>
+      <div id="goals" class="card-container"></div>
+    </section>
+
+    <section>
+      <h2>Risks</h2>
+      <button onclick="addCard('risks')">Add Risk</button>
+      <div id="risks" class="card-container"></div>
+    </section>
+
+    <section>
+      <h2>KPIs</h2>
+      <button onclick="addCard('kpis')">Add KPI</button>
+      <div id="kpis" class="card-container"></div>
+    </section>
+  </div>
+
+  <script src="overview.js"></script>
+</body>
+</html>
+<script>

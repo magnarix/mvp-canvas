@@ -1,113 +1,26 @@
+<!-- index.html – Login/Register Page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Command Canvas – Overview</title>
+  <title>Login | MagnaRix</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Sidebar placeholder -->
-  <button class="hamburger-btn" style="display:none;">☰</button>
-  <div id="sidebar-placeholder"></div>
+  <div class="container">
+    <h1>Welcome to MagnaRix</h1>
+    <p>Please login or register to continue.</p>
 
-  <!-- 🔐 Login/Register UI -->
-  <div style="padding: 1rem; background: #fff8e7; text-align: center; margin-bottom: 1rem;">
-    <input id="auth-email" type="email" placeholder="Email" />
-    <input id="auth-password" type="password" placeholder="Password" />
-    <button onclick="login()">Login</button>
-    <button onclick="register()">Register</button>
-    <span id="auth-status" style="margin-left: 1rem; font-weight: bold; color: green;"></span>
+    <div class="auth-form">
+      <input type="email" id="auth-email" placeholder="Email" required />
+      <input type="password" id="auth-password" placeholder="Password" required />
+      <button onclick="login()">Login</button>
+      <button onclick="register()">Register</button>
+      <p id="auth-status"></p>
+    </div>
   </div>
 
-  <main class="main-content">
-    <header>
-      <img src="logo.png" alt="MagnaRix Logo" />
-      <h1>Command Canvas</h1>
-      <p class="subtitle">
-        Define Your Goals, Risks & KPIs
-        <a href="index_README.html" target="_blank" class="readme-link">(Readme)</a>
-      </p>
-    </header>
-
-    <div class="canvas">
-      <!-- Goals -->
-      <section class="column">
-        <h2>Goals</h2>
-        <p>Key objectives to drive strategic growth.</p>
-        <div class="add-goal-form">
-          <input type="text" id="goal-title" placeholder="Goal Title" required />
-          <textarea id="goal-desc" placeholder="Description (optional)" rows="2"></textarea>
-          <input type="date" id="goal-due" />
-          <input type="text" id="goal-owner" placeholder="Owner (optional)" />
-          <button id="saveGoalBtn" class="btn">Save Goal</button>
-        </div>
-        <div id="goals-list"></div>
-      </section>
-
-      <!-- Risks -->
-      <section class="column">
-        <h2>Risks</h2>
-        <p>Potential obstacles that may impede progress.</p>
-        <div class="add-risk-form">
-          <input type="text" id="risk-title" placeholder="Risk Title" required />
-          <select id="risk-likelihood">
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-          <select id="risk-impact">
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-          <textarea id="risk-mitigation" placeholder="Mitigation Notes" rows="2"></textarea>
-          <button id="saveRiskBtn" class="btn">Save Risk</button>
-        </div>
-        <div id="risks-list"></div>
-      </section>
-
-      <!-- KPIs -->
-      <section class="column">
-        <h2>KPIs</h2>
-        <p>Metrics to measure success and performance.</p>
-        <div class="add-kpi-form">
-          <input type="text" id="kpi-name" placeholder="KPI Name" required />
-          <select id="kpi-metricType">
-            <option value="%">Percent (%)</option>
-            <option value="$">Dollar ($)</option>
-            <option value="Number">Number</option>
-          </select>
-          <input type="text" id="kpi-target" placeholder="Target Value" />
-          <select id="kpi-frequency">
-            <option value="Weekly">Weekly</option>
-            <option value="Monthly">Monthly</option>
-            <option value="Quarterly">Quarterly</option>
-          </select>
-          <button id="saveKpiBtn" class="btn">Save KPI</button>
-        </div>
-        <div id="kpis-list"></div>
-      </section>
-    </div>
-  </main>
-
-  <script src="script_updated.js"></script>
-
-  <script>
-    fetch("sidebar.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("sidebar-placeholder").innerHTML = html;
-        let page = window.location.pathname.split("/").pop() || "index.html";
-        document.querySelectorAll(".sidebar-nav .nav-item").forEach(link => {
-          if (link.getAttribute("href") === page) {
-            link.classList.add("active");
-          }
-        });
-        if (window.innerWidth <= 768) {
-          document.querySelector(".hamburger-btn").style.display = "inline-block";
-        }
-      });
-  </script>
+  <script src="auth.js"></script>
 </body>
 </html>
